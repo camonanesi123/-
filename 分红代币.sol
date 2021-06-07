@@ -959,7 +959,7 @@ contract SafeMoon is Context, IERC20, Ownable {
         uint256 rSupply = _rTotal;
         uint256 tSupply = _tTotal;      
         for (uint256 i = 0; i < _excluded.length; i++) {
-            //忽略大钱包中的数额
+            //忽略大钱包中的数额 把那些没有参与税收的人扣除
             if (_rOwned[_excluded[i]] > rSupply || _tOwned[_excluded[i]] > tSupply) return (_rTotal, _tTotal);
             rSupply = rSupply.sub(_rOwned[_excluded[i]]);
             tSupply = tSupply.sub(_tOwned[_excluded[i]]);
